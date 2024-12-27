@@ -1,0 +1,18 @@
+.img-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+
+}
+
+img {
+    object-fit: contain;
+    height: 220px;
+    width: 220px;
+}
+
+html {
+    background-color: gray;
+}

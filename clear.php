@@ -1,10 +1,6 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        $conn = mysqli_connect("localhost", "root", "", "db_connect");
-
-        if ($conn->connect_error) {
-            die("Connection error: " . $conn->connect_error);
-        } 
+        include_once("connect.php");
 
         $query = "TRUNCATE test_table";
         $rs = mysqli_query($conn, $query);
