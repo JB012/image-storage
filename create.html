@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Storage - Add a file</title>
+</head>
+<body>
+    <form action="http://localhost/image-storage/upload.php" id="submitForm" method="POST" enctype="multipart/form-data">
+        <div>
+            <label for="file">File</label>
+            <input type="file" id="image" name="file_name">
+        </div>
+        <input type="submit" value="Upload" name="submit"/>
+    </form>
+    
+    <script type="text/javascript" src="jquery.js"></script>
+    <script src="formHandler.js"></script>
+</body>
+</html>

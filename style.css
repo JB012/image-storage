@@ -1,18 +1,75 @@
-.img-container {
+#img-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /*Fits flex items by making multiple lines*/
     justify-content: flex-start;
     align-items: center;
     gap: 30px;
 
 }
+html, .modal {
+    background-color: gray;
+}
+html {
+    width: 400px;
+    height: 600px;
+}
 
 img {
     object-fit: contain;
-    height: 220px;
-    width: 220px;
+    height: 100px;
+    width: 100px;
 }
 
-html {
-    background-color: gray;
+.modal {
+display: none; /* Hides modal */
+flex-direction: column;
+position: absolute; /* Overlaps elements */
+left: 0;
+top: 0;
+width: 100%;
+height: 100%;
 }
+
+.modal > img {
+display: block;
+margin-left: auto;
+margin-right: auto;
+margin-top: 20%;
+width: 50%;
+height: 50%;
+}
+
+#caption {
+    margin-left: 20px;
+}
+
+.close, #back, #forward {
+position: absolute;
+color: #f1f1f1;
+font-size: 40px;
+font-weight: bold;
+transition: 0.3s;
+}
+
+.close {
+    top: 15px;
+    right: 35px;
+}
+
+#back {
+    left: 10px;
+}
+
+#forward {
+    right: 10px;
+}
+
+#back, #forward {
+    top: 40%
+}
+
+
+
+
+
+

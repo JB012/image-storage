@@ -23,13 +23,26 @@ if (in_array($ext, $allowedTypes)) {
 
     //Must be declared before outputs.
 
-    header("Location: index.php");
     if (!$isDuplicate) {
         $query = "INSERT INTO `test_table` (`fldName`) VALUES ('$name')";
         $rs = mysqli_query($conn, $query);
     
         if ($rs) {
-            echo "File $name has been recorded in database.";
+            $images = array();
+            $query = "SELECT * FROM test_table";
+            $rs = mysqli_query($conn, $query);
+            if ($rs) {
+                if ($rs->num_rows > 0) {
+                    while ($info = $rs->fetch_assoc()) {
+                            $images[] = $info["fldName"];
+                    }
+                }
+                $images = json_encode($images);
+                echo $images;
+            }
+            else {
+                echo "Something went wrong.";
+            }
         }
         else {
             echo "Something went wrong.";
