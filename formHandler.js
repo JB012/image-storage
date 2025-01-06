@@ -9,11 +9,22 @@ let type;
 let allTags = '';
 
 /*
-TODO: For update.php, on't check esxtension because we know that the file's an image from Chrome
-Don't use filename to store rightclick images because the files don't exist, use the original url
-Save image as a BLOB, get custom name (i don't think type matters). Comparing duplicates can be checking BLOBS.
-The images folder from upload.php should be a list of original urls/files. To retrieve name/tags of pics, use
-the BLOB value as it's the images id.
+TODO: (HIGHEST PRIORITY IS THE CLICK TAG, THEN ALL IMPORTANT GOALS WILL HAVE BEEN MET).
+- Instead of doing edit.html. Put a pencil logo next to name. And a vertical three dots next to tag
+button to where there'll be one dropdown menu (for now), delete. 
+- Clicking on a tag shows the image gallery with images with that tag.
+- Entering an image via files will display the image, making it easier to think of tags while looking at them. 
+- Back button.
+- Delete image feature (Could make something like edit-modal.png. For tags, instead of three dots, it'll just be X. There 
+could also be an option to add more tags via + sign. Delete button for image)
+- Sort of duplicate names: Popup that says there's an existing file name, giving you an option to give the current image
+name(# of duplicate names).
+- Search feature: Search by name (images that are named character-series, character-series(1), ...), tags
+
+Completed:
+- Adding images via files.
+- Adding customizable tags and names.
+- Clicking through images.
 */
 
 tagButton.addEventListener('click', () => {

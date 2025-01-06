@@ -32,16 +32,15 @@ $("#clearImages").on("submit", function(event) {
     })
 });
 
-chrome.storage.local.get('images', function (result) {
-    console.log(result['images']);
-   if (result['images'] != null) {
-    images = result['images'];
+function addImages() {
+    console.log(images);
     for (let i = 0; i < images.length; i++) {
         let img = document.createElement('img');
         img.src = images[i]["image"];
         img.alt = images[i]["tags"];
         img.id = `${i}`;
         img.onclick = function() {
+            console.log('Clicked');
             modalImg.src = this.src;
             modalImg.id = this.id;
 
@@ -50,9 +49,8 @@ chrome.storage.local.get('images', function (result) {
 
 
             //Will need to change this condiiton when working on editing names.
-            if (modalName.textContent === "") {
-                modalName.textContent = `Name: ${images[i]["name"]}`;
-            }
+            modalName.textContent = `Name: ${images[i]["name"]}`;
+            
 
             //Will need to change this condiiton when working on editing tags.
             if (modalTags.childElementCount === 0) {
@@ -62,6 +60,20 @@ chrome.storage.local.get('images', function (result) {
                     for (let i = 0; i < tags.length; i++) {
                         let tagButton = document.createElement('button');
                         tagButton.textContent = tags[i];
+
+                        tagButton.onclick = function() {
+                            let taggedImages = [];
+                            for (let i = 0; i < images.length; i++) {
+                                if (images[i]["tags"].includes(tagButton.textContent)) {
+                                    taggedImages.push(images[i]);
+                                }
+                            }
+
+                            imgContainer.innerHTML = "";
+                            images = taggedImages;
+                            addImages();
+                            closeSpan.click();
+                        }
         
                         modalTags.appendChild(tagButton);
                     }
@@ -72,6 +84,12 @@ chrome.storage.local.get('images', function (result) {
         }
         imgContainer.appendChild(img);
     }
+}
+chrome.storage.local.get('images', function (result) {
+    console.log(result['images']);
+   if (result['images'] != null) {
+    images = result['images'];
+    addImages();
    }
 }); 
 
