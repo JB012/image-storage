@@ -9,8 +9,10 @@
     "host_permissions": ["http://localhost/*"],
     "permissions": [
     "storage",
-    "activeTab",
     "contextMenus",
-    "tabs"
-  ]
+    "downloads"
+  ],
+  "background": {
+    "service_worker": "background.js"
   }
+}

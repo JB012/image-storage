@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Storage - Edit Image</title>
+</head>
+<body>
+    <img>
+    <form action="http://localhost/image-storage/upload.php" method="POST" id="submitForm" enctype="multipart/form-data">
+        <div>
+            <input type="file" id="file" name="file_name">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name">
+            <label for="tags">Tags</label>
+            <input type="button" id="tag-button" value="&plus;">
+            <div id="tags"></div>
+            <input type="submit" id="submit" name="submit" value="Save changes">
+        </div>
+    </form>
+    <style>
+        html {
+            width: 400px;
+            height: 600px;
+        }
+        img {
+            object-fit: contain;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20%;
+            margin-bottom: 10%;
+            width: 50%;
+            height: 50%;
+        }
+        
+        #name {
+            width: 200px;
+        }
+        #tag-button {
+            border-radius: 50%;
+            width: 20px;
+            padding: 0;
+        }
+
+        #submit {
+            left: 0;
+            width: 100px;
+            align-self: flex-end;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+    <script src="jquery.js"></script>
+    <script src="edit.js"></script>
+</body>
+</html>

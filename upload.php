@@ -2,58 +2,65 @@
 include_once("connect.php");
 
 
-$name = htmlspecialchars($_FILES["file_name"]["name"]);
-//Gets info on the type of the file.
-$ext = pathinfo($name, PATHINFO_EXTENSION);
-$allowedTypes = array("jpg", "jpeg", "png", "gif");
+$name = $_POST["custom_name"];
+$tags = $_POST['tags'];
 
-if (in_array($ext, $allowedTypes)) {
+if (!isset($_POST['rightclick-image'])) {
+    $file = htmlspecialchars($_FILES["file_name"]["name"]);
+}
+else {
+    $file = $_POST['rightclick-image'];
+}
+
+
+/*
     $isDuplicate = false; 
-    $query = "SELECT fldName FROM test_table";
+    $query = "SELECT fldFile FROM test_table";
     $rs = mysqli_query($conn, $query);
 
     if ($rs->num_rows > 0) {
-        //Going through each row.
+        //Going through each row in the database table.
         while ($info = $rs->fetch_assoc()) {
-            if ($info["fldName"] === $name) {
-                $isDuplicate = true;
-            }
+            
         }
     }
+        */
 
     //Must be declared before outputs.
 
-    if (!$isDuplicate) {
-        $query = "INSERT INTO `test_table` (`fldName`) VALUES ('$name')";
+$isDuplicate = false;
+if (!$isDuplicate) {
+    $query = "INSERT INTO `test_table` (`fldName`, `fldSrc`, `fldTags`) VALUES ('$name', '$file', '$tags')";
+    $rs = mysqli_query($conn, $query);
+
+    if ($rs) {
+        $images = array();
+        $query = "SELECT * FROM test_table";
         $rs = mysqli_query($conn, $query);
-    
         if ($rs) {
-            $images = array();
-            $query = "SELECT * FROM test_table";
-            $rs = mysqli_query($conn, $query);
-            if ($rs) {
-                if ($rs->num_rows > 0) {
-                    while ($info = $rs->fetch_assoc()) {
-                            $images[] = $info["fldName"];
-                    }
+            if ($rs->num_rows > 0) {
+                while ($info = $rs->fetch_assoc()) {
+                    $images[] = array(
+                        "name" => $info["fldName"],
+                        "image" => $info["fldSrc"],
+                        "tags" => $info["fldTags"]
+                    );
                 }
-                $images = json_encode($images);
-                echo $images;
             }
-            else {
-                echo "Something went wrong.";
-            }
+            $images = json_encode($images);
+            echo $images;
         }
         else {
-            echo "Something went wrong.";
+            echo "Something went wrong with query.";
         }
     }
     else {
-        echo "File has previously been added";
+        echo "Something went wrong with query.";
     }
-    
-} 
-else {
-    echo "File type must be jpg, jpeg, png, or gif.";
 }
+else {
+    echo "File has previously been added";
+}
+    
+
 ?>

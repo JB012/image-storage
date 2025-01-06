@@ -6,6 +6,14 @@
         $rs = mysqli_query($conn, $query);
         
         if ($rs) {
+            //Get all file names
+            $files = glob('images/*');
+            foreach($files as $file) {
+            if(is_file($file)) {
+                // Deleting file
+                unlink($file);
+            }
+}
             echo "SQL Table has been cleared";
         }
         else {

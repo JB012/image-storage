@@ -6,14 +6,39 @@
     <title>Image Storage - Add a file</title>
 </head>
 <body>
+    <img>
     <form action="http://localhost/image-storage/upload.php" id="submitForm" method="POST" enctype="multipart/form-data">
         <div>
             <label for="file">File</label>
-            <input type="file" id="image" name="file_name">
+            <input type="file" id="file" name="file_name"> 
+            <label for="name">Name</label>
+            <div class="container">
+                <input type="text" id="name" name="custom_name"><span></span>
+            </div>
+            <label for="tags">Tags</label>
+            <input type="button" id="tag-button" value="&plus;">
+            <div id="tags"></div>
         </div>
-        <input type="submit" value="Upload" name="submit"/>
+        <input id="submitButton" type="submit" value="Upload" name="submit"/>
     </form>
+
+    <style>
+        img {
+            object-fit: contain;
+            width: 200px;
+            height: 200px;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        span {
+            padding-left: 10px;
+        }
+    </style>
     
+    <script type="text/javascript" src="download.js"></script>
     <script type="text/javascript" src="jquery.js"></script>
     <script src="formHandler.js"></script>
 </body>

@@ -14,34 +14,23 @@
     <div id="img-container">
     </div>
     <div id="myModal" class="modal">
-        <span class="close">&times;</span>
-        <span id="back">&lt;</span>
-        <span id="forward">&gt;</span>
+        <button id="edit">Edit</button>
+        <div class="close">&times;</div>
+        <div id="back">&lt;</div>
+        <div id="forward">&gt;</div>
         <img id="modalImg">
         <div id="caption">
-            <div id="captionName">Name:</div>
-            <div id="captionTags">Tags:</div>
+            <div id="modalName"></div>
+            <div id="modalTags">Tags:</div>
         </div>
     </div>
-<!-- <?php
-include_once("connect.php");
-echo "<a href=create.php>Add new file</a>";
-$query = "SELECT * FROM test_table";
-$rs = mysqli_query($conn, $query);
-if ($rs) {
-    if ($rs->num_rows > 0) {
-        echo "<div class='img-container'>";
-        while ($info = $rs->fetch_assoc()) {
-            $fileName = $info["fldName"];
-            echo "<img src=$fileName>";
-        }
-        echo "</div>";
-    }
-}
-else {
-    echo "Something went wrong.";
-}
-?> -->
+    <!--
+    <div id="editModal">
+        <h2>Edit Image</h2>
+        <label for="name">Name</label>
+        <input id="changedName" type="text" name="changedName">
+    </div>
+    --> 
 <script type="text/javascript" src="jquery.js"></script>
 <script src="main.js"></script>
 </body>

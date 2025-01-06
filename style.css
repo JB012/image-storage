@@ -7,7 +7,7 @@
 
 }
 html, .modal {
-    background-color: gray;
+    background-color: rgb(133, 169, 183);
 }
 html {
     width: 400px;
@@ -43,6 +43,13 @@ height: 50%;
     margin-left: 20px;
 }
 
+
+#edit {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+}
+
 .close, #back, #forward {
 position: absolute;
 color: #f1f1f1;
@@ -51,9 +58,13 @@ font-weight: bold;
 transition: 0.3s;
 }
 
+
+.close, #back, #forward:hover {
+    cursor: pointer;
+}
 .close {
     top: 15px;
-    right: 35px;
+    right: 20px;
 }
 
 #back {
